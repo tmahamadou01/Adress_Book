@@ -43,8 +43,8 @@
                         <td>{{$contact->numero}}</td>
                         <td>
                             <button type="button" class="btn btn-primary">Primary</button>
-                            <button type="button" class="btn ">Modfier</button>
-                            <button type="button" class="btn btn-danger">Supprimer</button>
+                            <button type="button" class="btn "><a href="{{route('contact.edit',$contact->id)}}">Modfier</a></button>
+                            <button type="button" class="btn btn-danger"><a href="{{route('contact.delete',$contact->id)}}">Supprimer</a></button>
                         </td>
                     </tr>
                         @endforeach

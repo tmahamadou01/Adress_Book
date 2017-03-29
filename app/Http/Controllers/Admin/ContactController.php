@@ -58,4 +58,24 @@ class ContactController extends Controller
         return redirect()->route('contact.add')->with('success', 'Votre contact à été ajouté avec succès');
 
     }
+
+    public function edit($id)
+    {
+        $contact = Contact::find($id);
+        //dd($contact->nom);
+        return view('admin.edit', ['contact' => $contact]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $contacts = Contact::findOrFail($id);
+        $contacts->update($request->all());
+        return redirect(route('contact.edit', $contacts))->with('success', 'Modification éffectué avec succès');
+    }
+
+    public function destroy($id)
+    {
+        Contact::findOrFail($id)->delete();
+        return redirect()->route('contact.list')->with('success', 'Supression éffectué avec succès');
+    }
 }
