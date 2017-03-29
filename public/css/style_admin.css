@@ -153,6 +153,25 @@
 {
     border:0px;
 }
+#button_add_contact{
+    width: 10%;
+    background-color: #6590A5;
+}
+
+.basic_error {
+    border: 0;
+    padding: .5rem;
+    list-style: none;
+    margin: 0;
+    font-size: 1em;
+    background-color: #f1abab !important;
+    width: 100%;
+    border-radius: 0;
+    color: #DB2828 !important;
+    border-color: #DB2828 !important;
+    font-weight: bold;
+}
+
 
 
 
