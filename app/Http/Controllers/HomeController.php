@@ -28,6 +28,6 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        echo 'test dash';
+        return view('admin.dashboard');
     }
 }

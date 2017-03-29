@@ -1,68 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
+    <div class="main">
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+        <div class="container">
+            <center>
+                <div class="middle">
+                    <div id="login">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                        <form role="form" method="POST" action="{{ route('login') }}">
+                            {{ csrf_field() }}
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
+                            <fieldset class="clearfix">
+
+                                <p ><span class="fa fa-user"></span><input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
+                                    @endif
+                                </p> <!-- JS because of IE support; better: placeholder="Username" -->
+                                <p><span class="fa fa-lock"></span><input id="password" type="password" name="password" required>
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                                    @endif</p> <!-- JS because of IE support; better: placeholder="Password" -->
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}> Remember Me
-                                    </label>
+                                <div>
+                                    <span id="forget-pass" style="width:48%; text-align:left;  display: inline-block;"><a class="small-text" href="#">Mot de passe oublié ?</a></span>
+                                    <span style="width:50%; text-align:right;  display: inline-block;"><input type="submit" value="CONNEXION"></span>
                                 </div>
-                            </div>
-                        </div>
+                                <br>
+                                <div>
+                                    <span id="register_link">vous n'avez pas encore de compte ? <a href="{{route('register')}}">Inscrivez vous</a></span>
+                                </div>
 
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
+                            </fieldset>
+                            <div class="clearfix"></div>
+                        </form>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+                        <div class="clearfix"></div>
+
+                    </div> <!-- end login -->
+                    <div class="logo"><img src="{{asset('img/calliweb.jpeg')}}" alt="">
+
+                        <div class="clearfix"></div>
+                    </div>
+
                 </div>
-            </div>
+            </center>
         </div>
+
     </div>
-</div>
 @endsection
