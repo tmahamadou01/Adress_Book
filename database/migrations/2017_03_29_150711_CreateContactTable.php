@@ -13,7 +13,7 @@ class CreateContactTable extends Migration
      */
     public function up()
     {
-        Schema::table('Contacts', function (Blueprint $table) {
+        Schema::create('Contacts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('civilite');
             $table->string('nom');
@@ -24,6 +24,7 @@ class CreateContactTable extends Migration
             $table->string('ville');
             $table->string('pays');
             $table->integer('numero');
+            $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
         });
     }
@@ -35,8 +36,6 @@ class CreateContactTable extends Migration
      */
     public function down()
     {
-        Schema::table('Contacts', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('Contacts');
     }
 }

@@ -8,6 +8,11 @@ class Contact extends Model
 {
     //
     protected $fillable = [
-        'name', 'email', 'password',
+        'civilite','nom', 'prenom', 'password','adresse1','adresse2','code_postal','ville','pays','numero','user_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
