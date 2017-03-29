@@ -42,8 +42,8 @@
                         <li>
                             <a href="#">Contacts<span class="glyphicon glyphicon-star pull-right"></span></a>
                             <ul class="parent">
-                                <li><a href="#"><span class="glyphicon glyphicon-list pull-left" style="padding-right: 10px;"></span> Liste </a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-plus pull-left" style="padding-right: 10px;"></span> Ajouter </a></li>
+                                <li><a href="{{route('contact.list')}}"><span class="glyphicon glyphicon-list pull-left" style="padding-right: 10px;"></span> Liste </a></li>
+                                <li><a href="{{route('contact.add')}}"><span class="glyphicon glyphicon-plus pull-left" style="padding-right: 10px;"></span> Ajouter </a></li>
                                 <li><a href="#"><span class="glyphicon glyphicon-list pull-left" style="padding-right: 10px;"></span> Exporter en CSV</a></li>
                             </ul>
                         </li>
