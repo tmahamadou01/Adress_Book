@@ -33,5 +33,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/contact/edit/{id}', '\App\Http\Controllers\Admin\ContactController@edit')->name('contact.edit');
     Route::get('/contact/add', '\App\Http\Controllers\Admin\ContactController@add')->name('contact.add');
     Route::post('/contact/send', '\App\Http\Controllers\Admin\ContactController@store')->name('contact.send');
-    //Route::get('/users/resend_email_confirmation/{id}', '\App\Http\Controllers\Admin\UserController@resend_email_confirmation')->name('resend_email_confirmation');
+
+    //export data
+    Route::get('/contact/download', '\App\Http\Controllers\Admin\ContactController@download')->name('csv_export');
 });

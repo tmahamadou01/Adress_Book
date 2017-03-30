@@ -27,7 +27,7 @@
                         <th>Ville</th>
                         <th>Pays</th>
                         <th>Numero</th>
-                        <th style="width: 300px;">Actions</th>
+                        <th style="width: 200px;">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,9 +42,8 @@
                         <td>{{$contact->pays}}</td>
                         <td>{{$contact->numero}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary">Primary</button>
-                            <button type="button" class="btn "><a href="{{route('contact.edit',$contact->id)}}">Modfier</a></button>
-                            <button type="button" class="btn btn-danger"><a href="{{route('contact.delete',$contact->id)}}">Supprimer</a></button>
+                                <button type="button" class="btn " id="button_modify"><a href="{{route('contact.edit',$contact->id)}}">Modfier</a></button>
+                                <button type="button" class="btn btn-danger" id="button_delete"><a href="{{route('contact.delete',$contact->id)}}">Supprimer</a></button>
                         </td>
                     </tr>
                         @endforeach

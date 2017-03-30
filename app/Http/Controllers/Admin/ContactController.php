@@ -78,4 +78,32 @@ class ContactController extends Controller
         Contact::findOrFail($id)->delete();
         return redirect()->route('contact.list')->with('success', 'Supression éffectué avec succès');
     }
+
+    public function download(Request $request, Guard $auth){
+        $contacts=DB::table('Contacts')
+            ->select('id','civilite','nom','prenom','adresse1', 'adresse2', 'code_postal', 'ville', 'pays', 'numero')
+            ->where('user_id', $auth->id())
+            ->get();
+        $tot_record_found=0;
+        if(count($contacts)>0){
+            $tot_record_found=1;
+
+            $CsvData=array('id','civilite','nom','prenom','adresse1', 'adresse2', 'code_postal', 'ville', 'pays', 'numero');
+            foreach($contacts as $value){
+                $CsvData[]=$value->id.','.$value->civilite.','.$value->nom.','.$value->prenom.','.$value->adresse1.','.$value->adresse2.','.$value->code_postal.','.$value->ville.','.$value->pays.','.$value->numero;
+            }
+
+            $filename="adresse-".date('Y-m-d').".csv";
+            $file_path=base_path().'/'.$filename;
+            $file = fopen($file_path,"w+");
+            foreach ($CsvData as $exp_data){
+                fputcsv($file,explode(',',$exp_data));
+            }
+            fclose($file);
+
+            $headers = ['Content-Type' => 'application/csv'];
+            return response()->download($file_path,$filename,$headers );
+        }
+        return view('admin.download',['record_found' =>$tot_record_found]);
+    }
 }

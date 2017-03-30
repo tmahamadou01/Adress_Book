@@ -172,6 +172,19 @@
     font-weight: bold;
 }
 
+#button_delete a{
+    color: white;
+}
+#button_delete a:hover{
+    text-decoration: none;
+}
+#button_modify a{
+    color: black;
+}
+#button_modify a:hover{
+    text-decoration: none;
+}
+
 
 
 
